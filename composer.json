@@ -1,0 +1,40 @@
+{
+    "name": "kinncj/Twig",
+    "type": "library",
+    "homepage": "http://github.com/kinncj/ReactExtension",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Kinn Coelho Julião",
+            "email": "kinncj@php.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "kinncj\\Twig\\": "src/kinncj/Twig"
+        }
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "reactjs/react-php-v8js",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/reactjs/react-php-v8js.git",
+                    "type": "git",
+                    "reference": "origin/master"
+                },
+                "autoload": {
+                    "classmap": ["ReactJS.php"]
+                }
+            },
+            "vendor-alias": "reactjs"
+        }
+    ],
+    "require": {
+        "twig/twig": "dev-master",
+        "reactjs/react-php-v8js": "dev-master",
+        "ext-v8js": "*"
+    }
+}
