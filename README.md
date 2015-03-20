@@ -42,18 +42,13 @@ services:
 {{react_component('ComponentName')}}
 </div>
 
-<div id="foo">
-{{react_component('Component2Name', {'data': user})}}
+<div id="bar">
+{{react_component('Component2Name', user)}}
 </div>
 
-```
+<div id="baz">
+{{react_component('Component3Name', user, div)}}
+{{react_component('Component4Name', user, div, my_id)}}
+</div>
 
-## Default arguments
-
-```text
-{
-    'tag':  'div',
-    'id':   'foo',
-    'data': null
-}
 ```

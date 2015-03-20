@@ -25,35 +25,29 @@ class ReactExtension extends \Twig_Extension
         );
     }
 
-    public function createComponent($componentName, $arguments = null)
+    public function createComponent($componentName, $arguments = null, $tag = "div", $selector = null )
     {
-        $this->reactJS->setComponent($componentName, $arguments['data']);
+        {{ react_component('ComponentName', params, 'div', '#id') }}
+        $this->reactJS->setComponent($componentName, $arguments);
+
+        if (is_null($selector)) {
+            $selector = sprintf('component_%d', mt_rand());
+        }
 
         $component = sprintf(
             '<%s id="%s">%s</%s>',
-            $arguments['tag'],
-            $arguments['id'],
+            $tag,
+            $selector,
             $this->reactJS->getMarkup(),
-            $arguments['tag']
+            $tag
         );
 
         $javascript = sprintf(
             '<script>%s</script>',
-            $this->reactJS->getJS(sprintf('#%s', $arguments['id']))
+            $this->reactJS->getJS(sprintf('#%s', $selector))
         );
 
         return sprintf("%s\n%s");
-    }
-
-    protected function mergeArguments(array $arguments = array())
-    {
-        $defaultArguments = array(
-            "tag"  => "div",
-            "id"   => sprintf('component_%d', mt_rand()),
-            "data" => null,
-        );
-
-        return array_merge($arguments, $defaultArguments);
     }
 
     public function getName()
