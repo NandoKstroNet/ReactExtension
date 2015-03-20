@@ -50,7 +50,7 @@ services:
 
 ## Default arguments
 
-```json
+```text
 {
     'tag':  'div',
     'id':   'foo',
